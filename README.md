@@ -56,6 +56,6 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Contributors
 
-<a href="https://github.com/remarkablemark/html-react-parser/graphs/contributors">
-  <img src="https://opencollective.com//contributors.svg?width=890&button=false">
+<a href="https://github.com/Hi-kue/rabbit-proxy/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Hi-kue/rabbit-proxy" />
 </a>
