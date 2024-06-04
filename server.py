@@ -15,6 +15,10 @@ import argparse
 import threading, ssl
 from enum import Enum
 from datetime import datetime
+from typing_extensions import Annotated, Optional
+
+# Typer lib
+import typer
 
 # Rich lib
 from rich import inspect, print, print_json, box
@@ -23,13 +27,16 @@ from rich.table import Table
 from rich.progress import Progress
 
 console = Console()
+app = typer.Typer()
 
 ## Constants
 BACKLOG = 50
 MAX_THREADS = 200
-BLACKLISTED_SITES = []
 MAX_CHUNK_SIZE = 16 * 1024
 MAX_REQUEST_SIZE = 1024
+
+BLACKLISTED_SITES = []
+WHITELISTED_SITES = []
 
 class Error(Enum):
     STATUS_500 = "Internal Server Error."
@@ -145,8 +152,46 @@ class ConnectionHandler(threading.Thread):
 Server Class
 '''
 class Server:
-    def __init__(self, host: str, port: int) -> None:
+    def __init__(self, host: str, port: Annotated[Optional[int], typer.Argument()] = 8080) -> None:
         pass
     
+    
+@app.command()
+def start_server(host: str, port: int) -> None:
+    pass
+
+@app.command()
+def stop_server() -> None:
+    pass
+
+@app.command()
+def restart_server() -> None:
+    pass
+
+@app.command()
+def status() -> None:
+    pass
+
+@app.command()
+def logs() -> None:
+    pass
+
+@app.command()
+def blacklist() -> None:
+    pass
+
+@app.command()
+def whitelist() -> None:
+    pass
+
+@app.command()
+def config() -> None:
+    pass
+
+@app.command()
+def help() -> None:
+    pass
+
 if __name__ == '__main__':
     server = Server(host="localhost", port=8080)
+    app()
