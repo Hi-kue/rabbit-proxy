@@ -148,16 +148,35 @@ class ConnectionHandler(threading.Thread):
         
         req = Request(raw=raw_request)
         
-'''
-Server Class
-'''
 class Server:
-    def __init__(self, host: str, port: Annotated[Optional[int], typer.Argument()] = 8080) -> None:
+    '''
+    Server Class
+    
+    :param host: str
+    :param port: int
+    
+    '''
+    def __init__(self, host: str, port: int) -> None:
+        self.__host = host
+        self.__port = port
+    
+    
+    def __start_server(self) -> None:
         pass
     
     
 @app.command()
-def start_server(host: str, port: int) -> None:
+def start_server(host: str, port: Annotated[Optional[int], typer.Argument()] = 8080) -> None:
+    '''Command: start_server
+    
+    Parameters:
+    host: str - Hostname or IP address.
+    port: int - Port number, defaults to 8080.
+    
+    Description:
+    This command will start the server dependent on the host and port 
+    provided through the command line arguments.
+    '''
     pass
 
 @app.command()
@@ -193,5 +212,4 @@ def help() -> None:
     pass
 
 if __name__ == '__main__':
-    server = Server(host="localhost", port=8080)
     app()
